@@ -1,0 +1,8 @@
+@model MessageModel
+
+@using (Html.BeginForm("Send", "Home", FormMethod.Post))
+{
+    @Html.TextBoxFor(model => model.Message)
+    @Html.ValidationMessageFor(model => model.Message)
+    <button type="submit">Send message</button>
+}
