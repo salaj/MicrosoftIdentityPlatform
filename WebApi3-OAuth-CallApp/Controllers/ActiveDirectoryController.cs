@@ -22,7 +22,7 @@ namespace WebApi3OAuthCallApp.Controllers
             _graphServiceClient = graphServiceClient;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("users")]
         [SwaggerOperation(Summary = nameof(GetUsers), Description = "Method to retrieve users' names and emails from jksa-test-tenant")]
         public async Task<IActionResult> GetUsers()
@@ -36,6 +36,7 @@ namespace WebApi3OAuthCallApp.Controllers
             });
 
             return Ok(enumerable);
+            //return Ok();
         }
     }
 }

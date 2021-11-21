@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Identity.Client;
 using Microsoft.OpenApi.Models;
 
-namespace WebApi_OAuth_CallApp
+namespace WebApiOAuthCallApp
 {
     public class Startup
     {

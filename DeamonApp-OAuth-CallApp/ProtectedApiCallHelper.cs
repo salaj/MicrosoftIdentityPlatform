@@ -58,7 +58,7 @@ namespace DeamonAppOAuthCallApp
 
                     // Note that if you got reponse.Code == 403 and reponse.content.code == "Authorization_RequestDenied"
                     // this is because the tenant admin as not granted consent for the application to call the Web API
-                    Console.WriteLine($"Content: {content}");
+                    Console.WriteLine($"Content: {content}"); 
                 }
                 Console.ResetColor();
             }

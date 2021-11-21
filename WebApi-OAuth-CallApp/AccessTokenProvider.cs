@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
 
-namespace WebApi_OAuth_CallApp
+namespace WebApiOAuthCallApp
 {
     public class AccessTokenProvider : IAccessTokenProvider
     {

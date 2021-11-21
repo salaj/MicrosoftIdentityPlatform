@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace WebApi_OAuth_CallApp
+namespace WebApiOAuthCallApp
 {
     public class GraphClient : IGraphClient
     {

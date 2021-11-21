@@ -11,7 +11,6 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace WebApi2OAuthCallApp.Controllers
 {
     [Authorize]
-    [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
     [ApiController]
     [Route("[controller]")]
     public class ActiveDirectoryController : ControllerBase
@@ -23,10 +22,9 @@ namespace WebApi2OAuthCallApp.Controllers
             _graphServiceClient = graphServiceClient;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("users")]
         [SwaggerOperation(Summary = nameof(GetUsers), Description = "Method to retrieve users' names and emails from jksa-test-tenant")]
-        //[AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
         public async Task<IActionResult> GetUsers()
         {
             var token = await HttpContext.GetTokenAsync("access_token");

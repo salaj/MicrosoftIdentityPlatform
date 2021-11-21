@@ -1,7 +1,6 @@
-using System;
 using Newtonsoft.Json;
 
-namespace WebApi_OAuth_CallApp
+namespace WebApiOAuthCallApp
 {
     public class User
     {

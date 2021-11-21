@@ -52,14 +52,6 @@ namespace WebApi3OAuthCallApp
                             {
                                 {$"api://{Configuration["AzureAd:ClientId"]}/.default", "Access my application API"}
                             }
-                        },
-                        ClientCredentials = new OpenApiOAuthFlow()
-                        {
-                            TokenUrl = new Uri($"{Configuration["AzureAd:Instance"]}{Configuration["AzureAd:TenantId"]}/oauth2/v2.0/token"),
-                            Scopes = new Dictionary<string, string>
-                            {
-                                {$"api://{Configuration["AzureAd:ClientId"]}/.default", "Access my application API"}
-                            }
                         }
                     }
                 };
@@ -83,12 +75,6 @@ namespace WebApi3OAuthCallApp
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi3_OAuth_CallApp v1");
                     c.OAuthClientId(Configuration["SwaggerUIClientId"]);
-                });
-                app.Use(async (context, next) =>
-                {
-                    context.Request.Headers.Remove("Origin");
-                    // Call the next delegate/middleware in the pipeline
-                    await next();
                 });
             }
 

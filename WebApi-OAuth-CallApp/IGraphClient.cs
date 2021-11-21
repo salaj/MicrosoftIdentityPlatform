@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace WebApi_OAuth_CallApp
+namespace WebApiOAuthCallApp
 {
     public interface IGraphClient
     {

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace WebApi_OAuth_CallApp.Controllers
+namespace WebApiOAuthCallApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -19,7 +18,7 @@ namespace WebApi_OAuth_CallApp.Controllers
              this.graphClient = graphClient;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("users")]
         [SwaggerOperation(Summary = nameof(GetUsers), Description = "Method to retrieve users' names and emails from jksa-test-tenant")]
         public async Task<IActionResult> GetUsers()
