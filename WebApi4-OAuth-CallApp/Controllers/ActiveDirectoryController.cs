@@ -1,24 +1,23 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Graph;
-using Microsoft.Identity.Web.Resource;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace WebApi4OAuthCallApp.Controllers
 {
-    [Authorize]
-    [RequiredScope("access_as_user")]
+    [Authorize (Roles = "access_as_application")]
     [ApiController]
     [Route("[controller]")]
     public class ActiveDirectoryController : ControllerBase
     {
-        private readonly GraphServiceClient _graphServiceClient;
+        private readonly IGraphClient _graphClient;
 
-        public ActiveDirectoryController(GraphServiceClient graphServiceClient)
+        public ActiveDirectoryController(IGraphClient graphClient)
         {
-            _graphServiceClient = graphServiceClient;
+            _graphClient = graphClient;
         }
 
         [HttpGet]
@@ -26,16 +25,13 @@ namespace WebApi4OAuthCallApp.Controllers
         [SwaggerOperation(Summary = nameof(GetUsers), Description = "Method to retrieve users' names and emails from jksa-test-tenant")]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _graphServiceClient.Users.Request().GetAsync();
-
-            var enumerable = users.Select(x => new User()
+            var usersJson = JObject.Parse(await _graphClient.GetUsers());
+            var users = JsonConvert.DeserializeObject<List<User>>(usersJson["value"].ToString(), new JsonSerializerSettings
             {
-                Email = x.Mail,
-                Name = x.DisplayName
+                TypeNameHandling = TypeNameHandling.All
             });
 
-            return Ok(enumerable);
-            //return Ok();
+            return Ok(users);
         }
     }
 }
