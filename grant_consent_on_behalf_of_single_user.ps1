@@ -1,6 +1,6 @@
 # The app for which consent is being granted. In this example, we're granting access
 # to Microsoft Graph Explorer, an application published by Microsoft.
-$clientAppId = "291dcd65-60a3-4102-b038-786a2f951570" # Microsoft Graph Explorer
+$clientAppId = "b7894c02-07fa-46bc-93cf-d2d31ce2e343" # Microsoft Graph Explorer
 # The API to which access will be granted. Microsoft Graph Explorer makes API 
 # requests to the Microsoft Graph API, so we'll use that here.
 $resourceAppId = "00000003-0000-0000-c000-000000000000" # Microsoft Graph API
